@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.zumepizza.interview.R;
 import com.zumepizza.interview.databinding.PizzaDetailLayoutBinding;
 
@@ -38,6 +39,9 @@ public class PizzaDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         PizzaDetailLayoutBinding binding = DataBindingUtil.inflate(inflater, R.layout.pizza_detail_layout, container, false);
         binding.setViewmodel(pizzaModel);
+        if (pizzaModel.assetImageURL != null && !pizzaModel.assetImageURL.isEmpty()) {
+            Glide.with(binding.getRoot().getContext()).load(pizzaModel.assetImageURL).into(binding.pizzaImage);
+        }
         binding.addToCartButton.setOnClickListener(v -> EventBus.getDefault().post(new AddPizzaToCartEvent()));
         return binding.getRoot();
     }
