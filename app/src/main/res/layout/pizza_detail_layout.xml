@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewmodel"
+            type="com.zumepizza.interview.ui.PizzaModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/pizza_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_normal_size">
+
+        <ImageView
+            android:id="@+id/pizza_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="@dimen/padding_normal_size"
+            android:layout_marginTop="@dimen/padding_normal_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/pizza_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_normal_size"
+            android:layout_marginEnd="@dimen/padding_normal_size"
+            android:layout_marginTop="@dimen/padding_normal_size"
+            android:text="@{viewmodel.name}"
+            android:textSize="@dimen/title_normal_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pizza_image"
+            tools:text="Tsing Tao" />
+
+        <TextView
+            android:id="@+id/pizza_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_normal_size"
+            android:layout_marginEnd="@dimen/padding_normal_size"
+            android:text="@{viewmodel.menuDescription}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pizza_name"
+            tools:text="Soup, Chinese" />
+
+        <TextView
+            android:id="@+id/pizza_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_normal_size"
+            android:layout_marginEnd="@dimen/padding_normal_size"
+            android:text="@{String.valueOf(viewmodel.price)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pizza_description"
+            tools:text="$12.55" />
+
+        <TextView
+            android:id="@+id/pizza_classifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_normal_size"
+            android:layout_marginEnd="@dimen/padding_normal_size"
+            android:text="@{viewmodel.mark}"
+            android:visibility="@{viewmodel.mark.length() > 0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pizza_price"
+            tools:text="vegetarian" />
+
+        <ImageButton
+            android:id="@+id/add_to_cart_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/pizza_image"
+            app:layout_constraintTop_toBottomOf="@id/pizza_classifications"
+            android:background="@android:drawable/ic_input_add"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>
