@@ -51,7 +51,7 @@ public class PizzaTransformer {
     public PizzaModel toPizzaModel(PizzaServerModel serverModel) {
         PizzaModel pizzaModel = new PizzaModel();
         pizzaModel.name = serverModel.name;
-        pizzaModel.price = serverModel.price;
+        pizzaModel.price = "price: $" + serverModel.price;
         pizzaModel.menuDescription = serverModel.menu_description;
         pizzaModel.assetImageURL = serverModel.assets.product_details_page.get(0).url;
         pizzaModel.mark = initMark(serverModel.classificationServerModel);

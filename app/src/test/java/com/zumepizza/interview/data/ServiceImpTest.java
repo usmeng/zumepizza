@@ -21,9 +21,11 @@ public class ServiceImpTest {
 
             @Override
             public void onSuccess(List<CategoryServerModel> categoryServerModelList) {
+                Assert.assertEquals(1, categoryServerModelList.size());
+
                 CategoryServerModel categoryServerModel = categoryServerModelList.get(0);
-                Assert.assertNotNull(categoryServerModel.ChefsChoice);
-                System.out.println(categoryServerModel.ChefsChoice.size());
+                Assert.assertNotNull(categoryServerModel.chefsChoice);
+                Assert.assertEquals(2, categoryServerModel.chefsChoice.size());
             }
 
             @Override
@@ -31,7 +33,7 @@ public class ServiceImpTest {
                 System.out.println(e.getMessage());
             }
         });
-        Thread.sleep(100000);
+        Thread.sleep(10000);
     }
 
 }
